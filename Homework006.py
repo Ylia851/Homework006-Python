@@ -1,3 +1,50 @@
+#1. Создайте программу для игры в "Крестики-нолики".
+
+pole = list(range(1, 10))
+
+def Pole():
+    for i in range(3):
+        print(pole[0 + i * 3], pole[1 + i * 3], pole[2 + i * 3])
+
+Pole()
+
+User1 = input('Введите Ваше Имя: ')
+print(f'{User1} Вы - первый игрок! Вы играете Х!')
+UserHod1 = 'X'
+User2 = input('Введите Ваше Имя: ')
+print(f'{User2} Вы - второй игрок! Вы играете О!')
+UserHod2 = 'O'
+UserHod = 0
+if UserHod % 2 == 0:
+    UserHod = UserHod1
+else:
+    UserHod = UserHod2
+
+def InputHod(UserHod):
+    
+    print(f'Выберите ячейку, в которой вы хотите поставить  {UserHod}')
+    Hod = int(input())
+    if Hod > 9 or Hod < 1:
+        print("Вы ввели неправильный номер ячейки. Повторите ввод: ")
+    elif Hod <= 9 or Hod >= 1:
+        pole[Hod - 1] == UserHod
+    else:
+        print('Ячейка уже занята! Сделайте ход в другой ячейке')
+
+def Win():
+    count = 0
+    if (pole[0] == pole[1] == pole[2] == 'X') or (pole[3] == pole[4] == pole[5] == 'X') or (pole[6] == pole[7] == pole[8] == 'X') or (pole[0] == pole[4] == pole[8] == 'X') or (pole[2] == pole[4] == pole[6] == 'X') or (pole[0] == pole[3] == pole[6] == 'X') or (pole[1] == pole[4] == pole[7] == 'X') or (pole[2] == pole[5] == pole[8] == 'X'):
+        print(f'Поздравляем! Выиграл {User1}. Игра закончена.')
+    elif (pole[0] == pole[1] == pole[2] == 'O') or (pole[3] == pole[4] == pole[5] == 'O') or (pole[6] == pole[7] == pole[8] == 'O') or (pole[0] == pole[4] == pole[8] == 'O') or (pole[2] == pole[4] == pole[6] == 'O') or (pole[0] == pole[3] == pole[6] == 'O') or (pole[1] == pole[4] == pole[7] == 'O') or (pole[2] == pole[5] == pole[8] == 'O'):
+        print(f'Поздравляем! Выиграл {User2}. Игра закончена.')
+    else:
+        return InputHod(UserHod)
+    count +=1
+    if count > 8:
+        print("Ничья!")
+Win()
+
+
 #2. Напишите программу вычисления арифметического выражения заданного строкой. Используйте операции +,-,/,. приоритет операций стандартный.
 #*Пример:
 #2+2 => 4;
